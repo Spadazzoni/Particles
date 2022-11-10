@@ -27,7 +27,7 @@ void Main() {
   }
   TH1F* types = new TH1F("types", "Particle Types", 7, 0, 7);
   TH2F* angles = new TH2F("angles", "Distribution of azimutal and polar angles",
-                          1000, 0, 2 * M_PI, 1000, 0, M_PI);
+                          100, 0, 2 * M_PI, 100, 0, M_PI);
   TH1F* pav = new TH1F("pav", "Distribution of average impulse", 1000, 0, 7);
   TH1F* impulse =
       new TH1F("impulse", "Distribution of trasverse impulse", 1000, 0, 5);
@@ -178,9 +178,15 @@ void Main() {
   TCanvas* ctot[11] = {c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11};
   TFile* f = new TFile("Particles.root", "RECREATE");
   for (int i = 0; i < 11; ++i) {
-    ctot[i]->cd();
-    htot[i]->DrawCopy();
-    htot[i]->Write();
+    if (i == 1) {
+      ctot[i]->cd();
+      htot[i]->DrawCopy("LEGO");
+      htot[i]->Write();
+    } else {
+      ctot[i]->cd();
+      htot[i]->DrawCopy();
+      htot[i]->Write();
+    }
   }
   f->Close();
   delete ppion;
