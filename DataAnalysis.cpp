@@ -8,12 +8,7 @@
 #include "TRandom.h"
 #include "TString.h"
 #include "TStyle.h"
-
-/*Double_t Exp(Double_t *x, Double_t *par) {
-  Float_t xx = x[0];
-  Double_t val = par[0] * exp(par[1] * xx);
-  return val;
-}*/
+//#include "TMath.h"
 
 void Data() {
   gStyle->SetOptStat(2210);
@@ -108,12 +103,24 @@ void Data() {
   c0->Divide(3, 2);
   for (int i = 0; i < 6; ++i) {
     c0->cd(i + 1);
+    htot[i + 5]->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+    htot[i + 5]->GetYaxis()->SetTitle("Entries");
+    htot[i + 5]->GetYaxis()->SetTitleOffset(1.45);
+    htot[i + 5]->Sumw2(kFALSE);
     htot[i + 5]->DrawCopy();
   }
   TCanvas *c1 = new TCanvas("c1", "MyCanvas1", 200, 10, 1000, 400);
-  c1->Divide(2,1);
+  c1->Divide(2, 1);
   c1->cd(1);
-  SumCharges->Draw();
+  SumCharges->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+  SumCharges->GetYaxis()->SetTitle("Entries");
+  SumCharges->GetYaxis()->SetTitleOffset(1.59);
+  SumCharges->Draw("hist");
+  f4->Draw("same");
   c1->cd(2);
-  SumParticles->Draw();
+  SumParticles->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+  SumParticles->GetYaxis()->SetTitle("Entries");
+  SumParticles->GetYaxis()->SetTitleOffset(1.6);
+  SumParticles->Draw("hist");
+  f5->Draw("same");
 }
