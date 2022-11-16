@@ -1,0 +1,71 @@
+=============================================
+|| ANALYZING GENERATED PARTICLE HISTOGRAMS ||
+=============================================
+
+
+->HISTOS ENTRIES: 
+Abundancies of generated Particles has 1e+07 entries.
+Distribution of azimutal and polar angles has 1e+07 entries.
+Average Impulse Distribution has 1e+07 entries.
+Distribution of trasverse impulse has 1e+07 entries.
+Distribution of energy has 1e+07 entries.
+Invariant Mass Distribution has 5.05024e+08 entries.
+Invariant Mass Distribution (opposite charges) has 2.52553e+08 entries.
+Invariant Mass Distribution (same charges) has 2.52471e+08 entries.
+Invariant Mass Distribution (p+/k- or p-/k+) has 2.38496e+07 entries.
+Invariant Mass Distribution (p+/k+ or p-/k-) has 2.37382e+07 entries.
+Invariant Mass Distribution (decay) has 99746 entries.
+
+
+->NUMBER OF OCCURRENCIES FOR EACH PARTICLE: 
+#pi+ was generated 4.001e+06 +/- 2000.25 times.
+#pi- was generated 3.9993e+06 +/- 1999.83 times.
+k+ was generated 499703 +/- 706.897 times.
+k- was generated 499209 +/- 706.547 times.
+p+ was generated 450553 +/- 671.232 times.
+p- was generated 450483 +/- 671.18 times.
+k* was generated 99746 +/- 315.826 times.
+
+
+->ABUNDANCIES (%): 
+#pi+ 40.01 %
+#pi- 39.993 %
+k+ 4.99703 %
+k- 4.99209 %
+p+ 4.50553 %
+p- 4.50483 %
+k* 0.99746 %
+
+
+->POLAR ANGLES DISTRIBUTIONS: 
+-->PHI:
+Mean Entries per Bin: 99999 +/- 31.6226
+Mean: 3.14123 +/- 0.000573623  rad
+Chi square: 1.00088
+-->THETA:
+Mean Entries per Bin: 99999 +/- 31.6226
+Mean: 1.57063 +/- 0.000286772  rad
+Chi square: 1.02844
+
+
+->AVERAGE IMPULSE DISTRIBUTION: 
+Multiplicative coefficient of exponential fit: 70002 +/- 31.5828  GeV
+Mean: 1.00013 +/- 0.000323751
+Chi square: 0.968743
+Fit probability: 0.755114
+
+
+->INVARIANT MASS DISTRIBUTIONS: 
+-->SAME CHARGES AND OPPOSITE CHARGES:
+Mean: 0.886228 +/- 0.00427261  GeV/c^2
+RMS: 0.0459002 +/- 0.00421436  GeV/c^2
+Chi Square: 1.05535
+Fit probability: 0.33497
+-->PARTICLES AND ANTIPARTICLES:
+Mean: 0.891661 +/- 0.00199914  GeV/c^2
+RMS: 0.0504011 +/- 0.00194495  GeV/c^2
+Chi Square: 1.03412
+Fit probability: 0.33497
+
+
+//FILE END//
