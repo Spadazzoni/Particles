@@ -25,31 +25,37 @@ void Main() {
   for (int i = 0; i < 7; ++i) {
     Particle::AddParticleType(ntot[i], mass[i], charge[i], res[i]);
   }
-  TH1F* types = new TH1F("types", "Particle Types", 7, 0, 7);
+  TH1F* types = new TH1F("types", "Abundancies of generated Particles", 7, 0, 7);
   TH2F* angles = new TH2F("angles", "Distribution of azimutal and polar angles",
                           100, 0, 2 * M_PI, 100, 0, M_PI);
-  TH1F* pav = new TH1F("pav", "Distribution of average impulse", 1000, 0, 7);
+  TH1F* pav = new TH1F("pav", "Average Impulse Distribution", 1000, 0, 7);
   TH1F* impulse =
       new TH1F("impulse", "Distribution of trasverse impulse", 1000, 0, 5);
   TH1F* energy = new TH1F("energy", "Distribution of energy", 1000, 0, 7);
   TH1F* invmass0 =
-      new TH1F("inv mass0", "Distribution of invariant mass", 1000, 0, 10);
+      new TH1F("inv mass0", "Invariant Mass Distribution", 1000, 0, 7);
   TH1F* invmass1 =
-      new TH1F("inv mass1", "Distribution of invariant mass (opposite charges)",
-               1000, 0, 10);
+      new TH1F("inv mass1", "Invariant Mass Distribution (opposite charges)",
+               100, 0.75, 1.05);
   TH1F* invmass2 =
-      new TH1F("inv mass2", "Distribution of invariant mass (same charges)",
-               1000, 0, 10);
+      new TH1F("inv mass2", "Invariant Mass Distribution (same charges)",
+               100, 0.75, 1.05);
   TH1F* invmass3 =
-      new TH1F("inv mass3", "Distribution of invariant mass (p+/k- or p-/k+)",
-               1000, 0, 8);
+      new TH1F("inv mass3", "Invariant Mass Distribution (p+/k- or p-/k+)",
+               1000, 0, 7);
   TH1F* invmass4 =
-      new TH1F("inv mass4", "Distribution of invariant mass (p-/k- or p-/k-)",
-               1000, 0, 8);
+      new TH1F("inv mass4", "Invariant Mass Distribution (p+/k+ or p-/k-)",
+               1000, 0, 7);
   TH1F* invmass5 = new TH1F(
-      "inv mass5", "Distribution of invariant mass (decay)", 1000, 0, 5);
+      "inv mass5", "Invariant Mass Distribution (decay)", 1000, 0, 2);
   TH1* htot[11] = {types,    angles,   pav,      impulse,  energy,  invmass0,
                    invmass1, invmass2, invmass3, invmass4, invmass5};
+  TH1F* invmass1_copy =
+      new TH1F("inv mass1c", "Invariant Mass Distribution (opposite charges)",
+               1000, 0, 7);
+  TH1F* invmass2_copy =
+      new TH1F("inv mass2c", "Invariant Mass Distribution (same charges)",
+               1000, 0, 7);
   for (int i = 5; i < 11; ++i) {
     htot[i]->Sumw2();
   }
@@ -130,10 +136,12 @@ void Main() {
         if (EventParticles[k].GetCharge() * EventParticles[l].GetCharge() ==
             -1) {
           invmass1->Fill(m);
+          invmass1_copy->Fill(m);
         }
         if (EventParticles[k].GetCharge() * EventParticles[l].GetCharge() ==
             1) {
           invmass2->Fill(m);
+          invmass2_copy->Fill(m);
         }
         if ((EventParticles[k].GetfIndex() == 0 &&
              EventParticles[l].GetfIndex() == 3) ||
@@ -188,6 +196,8 @@ void Main() {
       htot[i]->Write();
     }
   }
+  invmass1_copy->Write();
+  invmass2_copy->Write();
   f->Close();
   delete ppion;
   delete npion;
