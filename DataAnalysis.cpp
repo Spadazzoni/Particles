@@ -144,7 +144,7 @@ void Data() {
       htot[i + 5]->SetTitleSize(0.055, "x");
       htot[i + 5]->SetTitleSize(0.055, "y");
       htot[i + 5]->Sumw2(kFALSE);
-      htot[i + 5]->GetXaxis()->SetTitleOffset(0.93);
+      htot[i + 5]->GetXaxis()->SetTitleOffset(0.83);
       htot[i + 5]->GetYaxis()->SetTitleOffset(0.5);
       htot[i + 5]->SetLineColor(kBlack);
       htot[i + 5]->SetFillColor(40);

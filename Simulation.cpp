@@ -7,6 +7,9 @@
 #include "TRandom.h"
 
 void Main() {
+  R__LOAD_LIBRARY( ParticleType_cpp.so );
+  R__LOAD_LIBRARY( ResonanceType_cpp.so );
+  R__LOAD_LIBRARY( Particle_cpp.so );
   gRandom->SetSeed();
   std::vector<Particle> EventParticles;
   std::vector<Particle> ResonanceEvents;
