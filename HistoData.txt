@@ -9,63 +9,63 @@ Distribution of azimutal and polar angles has 1e+07 entries.
 Average Impulse Distribution has 1e+07 entries.
 Distribution of trasverse impulse has 1e+07 entries.
 Distribution of energy has 1e+07 entries.
-Invariant Mass Distribution has 5.05024e+08 entries.
-Invariant Mass Distribution (opposite charges) has 2.52553e+08 entries.
-Invariant Mass Distribution (same charges) has 2.52471e+08 entries.
-Invariant Mass Distribution (p+/k- or p-/k+) has 2.38496e+07 entries.
-Invariant Mass Distribution (p+/k+ or p-/k-) has 2.37382e+07 entries.
-Invariant Mass Distribution (decay) has 99746 entries.
+Invariant Mass Distribution has 5.05057e+08 entries.
+Invariant Mass Distribution (opposite charges) has 2.52599e+08 entries.
+Invariant Mass Distribution (same charges) has 2.52458e+08 entries.
+Invariant Mass Distribution (p+/k- or p-/k+) has 2.3888e+07 entries.
+Invariant Mass Distribution (p+/k+ or p-/k-) has 2.37693e+07 entries.
+Invariant Mass Distribution (decay) has 100074 entries.
 
 
 ->NUMBER OF OCCURRENCIES FOR EACH PARTICLE: 
-#pi+ was generated 4.001e+06 +/- 2000.25 times.
-#pi- was generated 3.9993e+06 +/- 1999.83 times.
-k+ was generated 499703 +/- 706.897 times.
-k- was generated 499209 +/- 706.547 times.
-p+ was generated 450553 +/- 671.232 times.
-p- was generated 450483 +/- 671.18 times.
-k* was generated 99746 +/- 315.826 times.
+#pi+ was generated 4.00013e+06 +/- 2000.03 times.
+#pi- was generated 3.99987e+06 +/- 1999.97 times.
+k+ was generated 499618 +/- 706.837 times.
+k- was generated 500433 +/- 707.413 times.
+p+ was generated 449612 +/- 670.531 times.
+p- was generated 450256 +/- 671.011 times.
+k* was generated 100074 +/- 316.345 times.
 
 
 ->ABUNDANCIES (%): 
-#pi+ 40.01 %
-#pi- 39.993 %
-k+ 4.99703 %
-k- 4.99209 %
-p+ 4.50553 %
-p- 4.50483 %
-k* 0.99746 %
+#pi+ 40.0013 %
+#pi- 39.9987 %
+k+ 4.99618 %
+k- 5.00433 %
+p+ 4.49612 %
+p- 4.50256 %
+k* 1.00074 %
 
 
 ->POLAR ANGLES DISTRIBUTIONS: 
 -->PHI:
-Mean Entries per Bin: 99999 +/- 31.6226
-Mean: 3.14123 +/- 0.000573623  rad
-Chi square: 1.00088
+Mean Entries per Bin: 99999.1 +/- 31.6226
+Mean: 3.14212 +/- 0.000573589  rad
+Chi square: 0.957774
 -->THETA:
-Mean Entries per Bin: 99999 +/- 31.6226
-Mean: 1.57063 +/- 0.000286772  rad
-Chi square: 1.02844
+Mean Entries per Bin: 99999.1 +/- 31.6226
+Mean: 1.57056 +/- 0.000286771  rad
+Chi square: 0.862513
 
 
 ->AVERAGE IMPULSE DISTRIBUTION: 
-Multiplicative coefficient of exponential fit: 70002 +/- 31.5828  GeV
-Mean: 1.00013 +/- 0.000323751
-Chi square: 0.968743
-Fit probability: 0.755114
+Multiplicative coefficient of exponential fit: 69988.9 +/- 31.556  GeV
+Mean: 0.999943 +/- 0.00032327
+Chi square: 0.971023
+Fit probability: 0.738489
 
 
 ->INVARIANT MASS DISTRIBUTIONS: 
 -->SAME CHARGES AND OPPOSITE CHARGES:
-Mean: 0.886228 +/- 0.00427261  GeV/c^2
-RMS: 0.0459002 +/- 0.00421436  GeV/c^2
-Chi Square: 1.05535
-Fit probability: 0.33497
+Mean: 0.891927 +/- 0.00636369  GeV/c^2
+RMS: 0.0581491 +/- 0.00615755  GeV/c^2
+Chi Square: 0.936889
+Fit probability: 0.655781
 -->PARTICLES AND ANTIPARTICLES:
-Mean: 0.891661 +/- 0.00199914  GeV/c^2
-RMS: 0.0504011 +/- 0.00194495  GeV/c^2
-Chi Square: 1.03412
-Fit probability: 0.33497
+Mean: 0.88962 +/- 0.00199458  GeV/c^2
+RMS: 0.0511818 +/- 0.0019417  GeV/c^2
+Chi Square: 0.970396
+Fit probability: 0.655781
 
 
 //FILE END//
