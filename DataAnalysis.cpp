@@ -135,7 +135,9 @@ void Data() {
       htot[i + 10]->SetTitleSize(0.055, "x");
       htot[i + 10]->SetTitleSize(0.055, "y");
       htot[i + 10]->GetXaxis()->SetTitleOffset(0.9);
-      htot[i + 10]->GetYaxis()->SetTitleOffset(0.5);
+      htot[i + 10]->GetYaxis()->SetTitleOffset(0.7);
+      htot[i + 10]->GetYaxis()->SetLabelSize(0.055);
+      htot[i + 10]->GetXaxis()->SetLabelSize(0.055);
       htot[i + 10]->SetFillColor(40);
       htot[i + 10]->DrawCopy();
     } else {
@@ -145,7 +147,9 @@ void Data() {
       htot[i + 5]->SetTitleSize(0.055, "y");
       htot[i + 5]->Sumw2(kFALSE);
       htot[i + 5]->GetXaxis()->SetTitleOffset(0.83);
-      htot[i + 5]->GetYaxis()->SetTitleOffset(0.5);
+      htot[i + 5]->GetYaxis()->SetTitleOffset(0.7);
+      htot[i + 5]->GetYaxis()->SetLabelSize(0.055);
+      htot[i + 5]->GetXaxis()->SetLabelSize(0.055);
       htot[i + 5]->SetLineColor(kBlack);
       htot[i + 5]->SetFillColor(40);
       htot[i + 5]->DrawCopy();
