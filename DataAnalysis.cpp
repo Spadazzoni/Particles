@@ -25,6 +25,8 @@ void Data() {
                    "inv mass3", "inv mass4", "inv mass5", "inv mass1c",
                    "inv mass2c"};
   TString names[7] = {"#pi+", "#pi-", "k+", "k-", "p+", "p-", "k*"};
+  TString Xtitles[4] = {"Particles", "Polar Angle (rad)",
+                        "Azimuthal Angle (rad)", "Mean Impulse (Gev)"};
   for (int i = 0; i < 11; ++i) {
     htot[i] = (TH1 *)file->Get(s[i]);
   }
@@ -49,6 +51,9 @@ void Data() {
   SumCharges->Fit("f4", "Q0");
   SumParticles->Fit("f5", "Q0");
   TF1 *f6 = new TF1("f6", "gaus", 0.6, 1.2);
+  TF1 *ftot[6] = {f2, f1, f3, f6, f4, f5};
+  TH1 *HDraw[7] = {htot[0],  AngleX,     AngleY,      htot[2],
+                   htot[10], SumCharges, SumParticles};
   htot[10]->Fit("f6", "Q0");
   std::ofstream txt("./HistoData.txt", std::ofstream::out);
   if (txt.is_open()) {
@@ -146,8 +151,15 @@ void Data() {
     std::cout << "Cannot find or open file." << '\n';
   }
   TCanvas *c0 = new TCanvas("c0", "MyCanvas0", 200, 10, 800, 400);
+  TCanvas *c1 = new TCanvas("c1", "MyCanvas1", 200, 10, 800, 400);
+  TCanvas *c2 = new TCanvas("c2", "MyCanvas2", 200, 10, 800, 400);
   c0->Print("Invariant mass distributions histograms.pdf[");
   c0->Divide(2, 3);
+  c1->Print("ParticlesHistos.pdf[");
+  c2->Print("InvMass.pdf[");
+  c2->Divide(2, 2);
+  c1->Divide(2, 2);
+  c0->cd();
   for (int i = 0; i < 6; ++i) {
     c0->cd(i + 1);
     if (i == 1 || i == 2) {
@@ -177,6 +189,34 @@ void Data() {
       htot[i + 5]->DrawCopy();
     }
   }
+  c1->cd();
+  for (int j = 0; j < 4; ++j) {
+    c1->cd(j + 1);
+    HDraw[j]->GetXaxis()->SetTitle(Xtitles[j]);
+    HDraw[j]->GetYaxis()->SetTitle("Entries");
+    HDraw[j]->SetLineColor(kBlack);
+    HDraw[j]->SetFillColor(40);
+    HDraw[j]->DrawCopy();
+    if (j != 0) {
+      ftot[j - 1]->SetLineColor(kAquamarine);
+      ftot[j - 1]->Draw("same");
+    }
+  }
+  c2->cd();
+  for (int i = 4; i < 7; ++i) {
+    c2->cd(i - 3);
+    HDraw[i]->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+    HDraw[i]->GetYaxis()->SetTitle("Entries");
+    HDraw[i]->SetLineColor(kBlack);
+    HDraw[i]->SetFillColor(40);
+    HDraw[i]->DrawCopy("hist");
+    ftot[i - 1]->SetLineColor(kAquamarine);
+    ftot[i - 1]->Draw("same");
+  }
   c0->Print("Invariant mass distributions histograms.pdf");
   c0->Print("Invariant mass distributions histograms.pdf]");
+  c1->Print("ParticlesHistos.pdf");
+  c1->Print("ParticlesHistos.pdf]");
+  c2->Print("InvMass.pdf");
+  c2->Print("InvMass.pdf]");
 }
