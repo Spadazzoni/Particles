@@ -48,6 +48,8 @@ void Data() {
   TF1 *f5 = new TF1("f5", "gaus", 0, 7);
   SumCharges->Fit("f4", "Q0");
   SumParticles->Fit("f5", "Q0");
+  TF1 *f6 = new TF1("f6", "gaus", 0.6, 1.2);
+  htot[10]->Fit("f6", "Q0");
   std::ofstream txt("./HistoData.txt", std::ofstream::out);
   if (txt.is_open()) {
     txt << "=============================================" << '\n';
@@ -82,13 +84,17 @@ void Data() {
         << f2->GetParError(0) << '\n';
     txt << "Mean: " << AngleX->GetMean() << " +/- " << AngleX->GetMeanError()
         << "  rad" << '\n';
-    txt << "Chi square: " << f2->GetChisquare() / f2->GetNDF() << '\n';
+    txt << "Chi square: " << f2->GetChisquare() << '\n';
+    txt << "Degrees of Freedom: " << f2->GetNDF() << '\n';
+    txt << " Reduced Chi square: " << f2->GetChisquare() / f2->GetNDF() << '\n';
     txt << "-->THETA:" << '\n';
     txt << "Mean Entries per Bin: " << f1->GetParameter(0) << " +/- "
         << f1->GetParError(0) << '\n';
     txt << "Mean: " << AngleY->GetMean() << " +/- " << AngleY->GetMeanError()
         << "  rad" << '\n';
-    txt << "Chi square: " << f1->GetChisquare() / f1->GetNDF() << '\n';
+    txt << "Chi square: " << f1->GetChisquare() << '\n';
+    txt << "Degrees of Freedom: " << f1->GetNDF() << '\n';
+    txt << "Reduced Chi square: " << f1->GetChisquare() / f1->GetNDF() << '\n';
     txt << '\n';
     txt << '\n';
     txt << "->AVERAGE IMPULSE DISTRIBUTION: " << '\n';
@@ -97,8 +103,20 @@ void Data() {
         << '\n';
     txt << "Mean: " << f3->GetParameter(1) << " +/- " << f3->GetParError(1)
         << '\n';
-    txt << "Chi square: " << f3->GetChisquare() / f3->GetNDF() << '\n';
+    txt << "Chi square: " << f3->GetChisquare() << '\n';
+    txt << "Degrees of Freedom: " << f3->GetNDF() << '\n';
+    txt << "Reduced Chi square: " << f3->GetChisquare() / f3->GetNDF() << '\n';
     txt << "Fit probability: " << f3->GetProb() << '\n';
+    txt << '\n';
+    txt << '\n';
+    txt << "INVARIANT MASS BETWEEN DECAY PRODUCTS OF SAME K*: " << '\n';
+    txt << "Mean: " << f6->GetParameter(1) << " +/- " << f6->GetParError(1)
+        << "  GeV/c^2" << '\n';
+    txt << "RMS: " << f6->GetParameter(2) << " +/- " << f6->GetParError(2)
+        << "  GeV/c^2" << '\n';
+    txt << "Width: " << f6->GetParameter(0) << " +/- " << f6->GetParError(0)
+        << "  GeV/c^2" << '\n';
+    txt << "Reduced Chi square: " << f6->GetChisquare() / f6->GetNDF() << '\n';
     txt << '\n';
     txt << '\n';
     txt << "->INVARIANT MASS DISTRIBUTIONS: " << '\n';
@@ -107,14 +125,18 @@ void Data() {
         << "  GeV/c^2" << '\n';
     txt << "RMS: " << f4->GetParameter(2) << " +/- " << f4->GetParError(2)
         << "  GeV/c^2" << '\n';
-    txt << "Chi Square: " << f4->GetChisquare() / f4->GetNDF() << '\n';
+    txt << "Width: " << f4->GetParameter(0) << " +/- " << f4->GetParError(0)
+        << "  GeV/c^2" << '\n';
+    txt << "Reduced Chi Square: " << f4->GetChisquare() / f4->GetNDF() << '\n';
     txt << "Fit probability: " << f4->GetProb() << '\n';
     txt << "-->PARTICLES AND ANTIPARTICLES:" << '\n';
     txt << "Mean: " << f5->GetParameter(1) << " +/- " << f5->GetParError(1)
         << "  GeV/c^2" << '\n';
     txt << "RMS: " << f5->GetParameter(2) << " +/- " << f5->GetParError(2)
         << "  GeV/c^2" << '\n';
-    txt << "Chi Square: " << f5->GetChisquare() / f5->GetNDF() << '\n';
+    txt << "Width: " << f5->GetParameter(0) << " +/- " << f5->GetParError(0)
+        << "  GeV/c^2" << '\n';
+    txt << "Reduced Chi Square: " << f5->GetChisquare() / f5->GetNDF() << '\n';
     txt << "Fit probability: " << f4->GetProb() << '\n';
     txt << '\n';
     txt << '\n';

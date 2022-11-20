@@ -41,30 +41,45 @@ k* 0.99177 %
 -->PHI:
 Mean Entries per Bin: 99999 +/- 31.6226
 Mean: 3.14254 +/- 0.000573666  rad
-Chi square: 0.988994
+Chi square: 97.9104
+Degrees of Freedom: 99
+ Reduced Chi square: 0.988994
 -->THETA:
 Mean Entries per Bin: 99998.8 +/- 31.6226
 Mean: 1.57072 +/- 0.000286783  rad
-Chi square: 1.18241
+Chi square: 117.059
+Degrees of Freedom: 99
+Reduced Chi square: 1.18241
 
 
 ->AVERAGE IMPULSE DISTRIBUTION: 
 Multiplicative coefficient of exponential fit: 70016.8 +/- 31.574  GeV
 Mean: 1.00036 +/- 0.000323505
-Chi square: 0.958956
+Chi square: 957.038
+Degrees of Freedom: 998
+Reduced Chi square: 0.958956
 Fit probability: 0.819833
+
+
+INVARIANT MASS BETWEEN DECAY PRODUCTS OF SAME K*: 
+Mean: 0.891734 +/- 0.000158809  GeV/c^2
+RMS: 0.0499052 +/- 0.000110439  GeV/c^2
+Width: 1582.47 +/- 6.12544  GeV/c^2
+Reduced Chi square: 1.08007
 
 
 ->INVARIANT MASS DISTRIBUTIONS: 
 -->SAME CHARGES AND OPPOSITE CHARGES:
 Mean: 0.887115 +/- 0.00457073  GeV/c^2
 RMS: 0.0449678 +/- 0.00503002  GeV/c^2
-Chi Square: 0.889746
+Width: 2465.25 +/- 224.731  GeV/c^2
+Reduced Chi Square: 0.889746
 Fit probability: 0.773274
 -->PARTICLES AND ANTIPARTICLES:
 Mean: 0.891471 +/- 0.00212298  GeV/c^2
 RMS: 0.0508089 +/- 0.00214  GeV/c^2
-Chi Square: 1.00537
+Width: 5346.19 +/- 192.596  GeV/c^2
+Reduced Chi Square: 1.00537
 Fit probability: 0.773274
 
 
