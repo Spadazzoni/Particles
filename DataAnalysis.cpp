@@ -154,9 +154,9 @@ void Data() {
   TCanvas *c1 = new TCanvas("c1", "MyCanvas1", 200, 10, 800, 400);
   TCanvas *c2 = new TCanvas("c2", "MyCanvas2", 200, 10, 800, 400);
   c0->Print("Invariant mass distributions histograms.pdf[");
-  c0->Divide(2, 3);
   c1->Print("ParticlesHistos.pdf[");
   c2->Print("InvMass.pdf[");
+  c0->Divide(2, 3);
   c2->Divide(2, 2);
   c1->Divide(2, 2);
   c0->cd();
