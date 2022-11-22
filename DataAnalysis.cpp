@@ -188,7 +188,7 @@ void Data() {
     HDraw[i]->GetYaxis()->SetTitleSize(0.05);
     HDraw[i]->GetYaxis()->SetTitleOffset(0.85);
     HDraw[i]->GetXaxis()->SetLabelSize(0.045);
-    HDraw[i]->GetXaxis()->SetLabelOffset(0.015);
+    HDraw[i]->GetXaxis()->SetLabelOffset(0.02);
     HDraw[i]->GetYaxis()->SetLabelSize(0.045);
     HDraw[i]->SetLineColor(kBlack);
     HDraw[i]->SetFillColor(40);
