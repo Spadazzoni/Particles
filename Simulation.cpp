@@ -7,9 +7,9 @@
 #include "TRandom.h"
 
 void Main() {
-  R__LOAD_LIBRARY( ParticleType_cpp.so );
-  R__LOAD_LIBRARY( ResonanceType_cpp.so );
-  R__LOAD_LIBRARY( Particle_cpp.so );
+  R__LOAD_LIBRARY(ParticleType_cpp.so);
+  R__LOAD_LIBRARY(ResonanceType_cpp.so);
+  R__LOAD_LIBRARY(Particle_cpp.so);
   gRandom->SetSeed();
   std::vector<Particle> EventParticles;
   std::vector<Particle> ResonanceEvents;
@@ -44,20 +44,17 @@ void Main() {
   TH1F* invmass2 =
       new TH1F("inv mass2", "Invariant Mass Distribution (same charges)", 100,
                0.75, 1.05);
-  TH1F* invmass3 = new TH1F(
-      "inv mass3", "Invariant Mass Distribution (p+/k- or p-/k+)", 1000, 0, 7);
-  TH1F* invmass4 = new TH1F(
-      "inv mass4", "Invariant Mass Distribution (p+/k+ or p-/k-)", 1000, 0, 7);
+  TH1F* invmass3 =
+      new TH1F("inv mass3", "Invariant Mass Distribution (p+/k- or p-/k+)",
+               1000, 0.7, 1.1);
+  TH1F* invmass4 =
+      new TH1F("inv mass4", "Invariant Mass Distribution (p+/k+ or p-/k-)",
+               1000, 0.7, 1.1);
   TH1F* invmass5 =
-      new TH1F("inv mass5", "Invariant Mass Distribution (decay)", 1000, 0, 2);
-  TH1F* invmass1_copy =
-      new TH1F("inv mass1c", "Invariant Mass Distribution (opposite charges)",
-               1000, 0, 7);
-  TH1F* invmass2_copy = new TH1F(
-      "inv mass2c", "Invariant Mass Distribution (same charges)", 1000, 0, 7);
-  TH1* htot[13] = {types,    angles,        pav,          impulse,  energy,
+      new TH1F("inv mass5", "Invariant Mass Distribution (decay)", 1000, 0, 2); //togli
+  TH1* htot[11] = {types,    angles,        pav,          impulse,  energy,
                    invmass0, invmass1,      invmass2,     invmass3, invmass4,
-                   invmass5,invmass1_copy, invmass2_copy};
+                   invmass5};
   for (int i = 5; i < 11; ++i) {
     htot[i]->Sumw2();
   }
@@ -138,12 +135,10 @@ void Main() {
         if (EventParticles[k].GetCharge() * EventParticles[l].GetCharge() ==
             -1) {
           invmass1->Fill(m);
-          invmass1_copy->Fill(m);
         }
         if (EventParticles[k].GetCharge() * EventParticles[l].GetCharge() ==
             1) {
           invmass2->Fill(m);
-          invmass2_copy->Fill(m);
         }
         if ((EventParticles[k].GetfIndex() == 0 &&
              EventParticles[l].GetfIndex() == 3) ||
@@ -163,7 +158,7 @@ void Main() {
     ResonanceEvents.clear();
   }
   TFile* f = new TFile("Particles.root", "RECREATE");
-  for (int i = 0; i < 13; ++i) {
+  for (int i = 0; i < 11; ++i) {
     htot[i]->Write();
   }
   f->Close();

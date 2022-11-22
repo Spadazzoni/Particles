@@ -14,28 +14,23 @@
 void Data() {
   gStyle->SetOptStat(2210);
   gStyle->SetOptFit(1111);
-  gStyle->SetStatW(0.3);
-  gStyle->SetStatH(0.15);
-  gStyle->SetStatX(0.9);
-  gStyle->SetStatY(0.9);
   TFile *file = new TFile("Particles.root");
-  TH1 *htot[13];
-  TString s[13] = {"types",     "angles",    "pav",       "impulse",
+  TH1 *htot[11];
+  TString s[11] = {"types",     "angles",    "pav",       "impulse",
                    "energy",    "inv mass0", "inv mass1", "inv mass2",
-                   "inv mass3", "inv mass4", "inv mass5", "inv mass1c",
-                   "inv mass2c"};
+                   "inv mass3", "inv mass4", "inv mass5"};
   TString names[7] = {"#pi+", "#pi-", "k+", "k-", "p+", "p-", "k*"};
-  TString Xtitles[4] = {"Particles", "Polar Angle (rad)",
-                        "Azimuthal Angle (rad)", "Mean Impulse (Gev)"};
+  TString Xtitles[4] = {"Particles", "#phi (rad)", "#theta (rad)",
+                        "Mean Impulse (GeV)"};
   for (int i = 0; i < 11; ++i) {
     htot[i] = (TH1 *)file->Get(s[i]);
   }
-  htot[11] = (TH1 *)file->Get(s[11]);
-  htot[12] = (TH1 *)file->Get(s[12]);
   TF1 *f1 = new TF1("f1", "[0]", 0, M_PI);      // theta
   TF1 *f2 = new TF1("f2", "[0]", 0, 2 * M_PI);  // phi
   TH1D *AngleX = ((TH2F *)file->Get(s[1]))->ProjectionX("AngleX", 0, 100);
+  AngleX->SetTitle("Polar Angle Distribution");
   TH1D *AngleY = ((TH2F *)file->Get(s[1]))->ProjectionY("AngleY", 0, 100);
+  AngleY->SetTitle("Azimuthal Angle Distribution");
   AngleX->Fit("f2", "Q0");
   AngleY->Fit("f1", "Q0");
   TF1 *f3 = new TF1("f3", "[0]*e^(-[1]*x)", 0, 7);
@@ -47,7 +42,7 @@ void Data() {
   SumParticles->Add(htot[8], htot[9], 1, -1);
   SumParticles->SetTitle("p+/k- and p-/k+ minus p+/k+ and p-/k-");
   TF1 *f4 = new TF1("f4", "gaus", 0, 10);
-  TF1 *f5 = new TF1("f5", "gaus", 0, 7);
+  TF1 *f5 = new TF1("f5", "gaus", 0, 10);
   SumCharges->Fit("f4", "Q0");
   SumParticles->Fit("f5", "Q0");
   TF1 *f6 = new TF1("f6", "gaus", 0.6, 1.2);
@@ -150,50 +145,26 @@ void Data() {
   } else {
     std::cout << "Cannot find or open file." << '\n';
   }
-  TCanvas *c0 = new TCanvas("c0", "MyCanvas0", 200, 10, 800, 400);
   TCanvas *c1 = new TCanvas("c1", "MyCanvas1", 200, 10, 800, 400);
   TCanvas *c2 = new TCanvas("c2", "MyCanvas2", 200, 10, 800, 400);
-  c0->Print("Invariant mass distributions histograms.pdf[");
   c1->Print("ParticlesHistos.pdf[");
   c2->Print("InvMass.pdf[");
-  c0->Divide(2, 3);
   c2->Divide(2, 2);
   c1->Divide(2, 2);
-  c0->cd();
-  for (int i = 0; i < 6; ++i) {
-    c0->cd(i + 1);
-    if (i == 1 || i == 2) {
-      htot[i + 10]->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
-      htot[i + 10]->GetYaxis()->SetTitle("Entries");
-      htot[i + 10]->SetLineColor(kBlack);
-      htot[i + 10]->SetTitleSize(0.055, "x");
-      htot[i + 10]->SetTitleSize(0.055, "y");
-      htot[i + 10]->GetXaxis()->SetTitleOffset(0.9);
-      htot[i + 10]->GetYaxis()->SetTitleOffset(0.7);
-      htot[i + 10]->GetYaxis()->SetLabelSize(0.055);
-      htot[i + 10]->GetXaxis()->SetLabelSize(0.055);
-      htot[i + 10]->SetFillColor(40);
-      htot[i + 10]->DrawCopy();
-    } else {
-      htot[i + 5]->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
-      htot[i + 5]->GetYaxis()->SetTitle("Entries");
-      htot[i + 5]->SetTitleSize(0.055, "x");
-      htot[i + 5]->SetTitleSize(0.055, "y");
-      htot[i + 5]->Sumw2(kFALSE);
-      htot[i + 5]->GetXaxis()->SetTitleOffset(0.82);
-      htot[i + 5]->GetYaxis()->SetTitleOffset(0.7);
-      htot[i + 5]->GetYaxis()->SetLabelSize(0.055);
-      htot[i + 5]->GetXaxis()->SetLabelSize(0.055);
-      htot[i + 5]->SetLineColor(kBlack);
-      htot[i + 5]->SetFillColor(40);
-      htot[i + 5]->DrawCopy();
-    }
-  }
   c1->cd();
+  gStyle->SetStatW(0.3);
+  gStyle->SetStatH(0.15);
+  gStyle->SetStatX(0.9);
+  gStyle->SetStatY(0.9);
   for (int j = 0; j < 4; ++j) {
     c1->cd(j + 1);
     HDraw[j]->GetXaxis()->SetTitle(Xtitles[j]);
     HDraw[j]->GetYaxis()->SetTitle("Entries");
+    HDraw[j]->GetXaxis()->SetTitleSize(0.05);
+    HDraw[j]->GetYaxis()->SetTitleSize(0.05);
+    HDraw[j]->GetYaxis()->SetTitleOffset(0.95);
+    HDraw[j]->GetXaxis()->SetLabelSize(0.045);
+    HDraw[j]->GetYaxis()->SetLabelSize(0.045);
     HDraw[j]->SetLineColor(kBlack);
     HDraw[j]->SetFillColor(40);
     HDraw[j]->DrawCopy();
@@ -203,18 +174,26 @@ void Data() {
     }
   }
   c2->cd();
+  gStyle->SetStatW(0.15);
+  gStyle->SetStatH(0.12);
+  gStyle->SetStatX(0.9);
+  gStyle->SetStatY(0.9);
+  htot[10]->GetXaxis()->SetRangeUser(0.6, 1.2);
   for (int i = 4; i < 7; ++i) {
     c2->cd(i - 3);
     HDraw[i]->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
     HDraw[i]->GetYaxis()->SetTitle("Entries");
+    HDraw[i]->GetXaxis()->SetTitleSize(0.05);
+    HDraw[i]->GetYaxis()->SetTitleSize(0.05);
+    HDraw[i]->GetYaxis()->SetTitleOffset(0.85);
+    HDraw[i]->GetXaxis()->SetLabelSize(0.045);
+    HDraw[i]->GetYaxis()->SetLabelSize(0.045);
     HDraw[i]->SetLineColor(kBlack);
     HDraw[i]->SetFillColor(40);
     HDraw[i]->DrawCopy("hist");
     ftot[i - 1]->SetLineColor(kAquamarine);
     ftot[i - 1]->Draw("same");
   }
-  c0->Print("Invariant mass distributions histograms.pdf");
-  c0->Print("Invariant mass distributions histograms.pdf]");
   c1->Print("ParticlesHistos.pdf");
   c1->Print("ParticlesHistos.pdf]");
   c2->Print("InvMass.pdf");
