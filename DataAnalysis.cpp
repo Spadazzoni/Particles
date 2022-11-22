@@ -165,6 +165,7 @@ void Data() {
     HDraw[j]->GetYaxis()->SetTitleOffset(0.95);
     HDraw[j]->GetXaxis()->SetLabelSize(0.045);
     HDraw[j]->GetYaxis()->SetLabelSize(0.045);
+    HDraw[j]->GetXaxis()->SetLabelOffset(0.01);
     HDraw[j]->SetLineColor(kBlack);
     HDraw[j]->SetFillColor(40);
     HDraw[j]->DrawCopy();
@@ -187,6 +188,7 @@ void Data() {
     HDraw[i]->GetYaxis()->SetTitleSize(0.05);
     HDraw[i]->GetYaxis()->SetTitleOffset(0.85);
     HDraw[i]->GetXaxis()->SetLabelSize(0.045);
+    HDraw[i]->GetXaxis()->SetLabelOffset(0.015);
     HDraw[i]->GetYaxis()->SetLabelSize(0.045);
     HDraw[i]->SetLineColor(kBlack);
     HDraw[i]->SetFillColor(40);
