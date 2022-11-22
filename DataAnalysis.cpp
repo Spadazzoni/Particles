@@ -14,6 +14,8 @@
 void Data() {
   gStyle->SetOptStat(2210);
   gStyle->SetOptFit(1111);
+  gStyle->SetStatW(0.15);
+  gStyle->SetStatH(0.15);
   gStyle->SetStatX(0.9);
   gStyle->SetStatY(0.9);
   TFile *file = new TFile("Particles.root");
@@ -24,9 +26,15 @@ void Data() {
   TString names[7] = {"#pi+", "#pi-", "k+", "k-", "p+", "p-", "k*"};
   TString Xtitles[4] = {"Particles", "#phi (rad)", "#theta (rad)",
                         "Mean Impulse (GeV)"};
+  TString XLabels[7] = {"#pi+", "#pi-", "K+", "K-", "p+", "p-", "K*"};
   for (int i = 0; i < 11; ++i) {
     htot[i] = (TH1 *)file->Get(s[i]);
   }
+  for (int i = 0; i < 7; ++i) {
+    htot[0]->GetXaxis()->SetBinLabel(i + 1, XLabels[i]);
+  }
+  htot[0]->SetStats(kFALSE);
+  htot[0]->SetLabelSize(0.07);
   TF1 *f1 = new TF1("f1", "[0]", 0, M_PI);      // theta
   TF1 *f2 = new TF1("f2", "[0]", 0, 2 * M_PI);  // phi
   TH1D *AngleX = ((TH2F *)file->Get(s[1]))->ProjectionX("AngleX", 0, 100);
@@ -155,18 +163,13 @@ void Data() {
   c2->Divide(2, 2);
   c1->Divide(2, 2);
   c1->cd();
-  double PaveH[4] = {2.5, 0.15, 0.15, 0.45};
-  double PaveW[4] = {0.6, 0.3, 0.3, 0.7};
   for (int j = 0; j < 4; ++j) {
     c1->cd(j + 1);
-    gStyle->SetStatW(PaveW[j]);
-    gStyle->SetStatH(PaveH[j]);
     HDraw[j]->GetXaxis()->SetTitle(Xtitles[j]);
     HDraw[j]->GetYaxis()->SetTitle("Entries");
     HDraw[j]->GetXaxis()->SetTitleSize(0.05);
     HDraw[j]->GetYaxis()->SetTitleSize(0.05);
     HDraw[j]->GetYaxis()->SetTitleOffset(0.95);
-    HDraw[j]->GetXaxis()->SetLabelSize(0.045);
     HDraw[j]->GetYaxis()->SetLabelSize(0.045);
     HDraw[j]->GetXaxis()->SetLabelOffset(0.01);
     HDraw[j]->SetLineColor(kBlack);
@@ -175,13 +178,10 @@ void Data() {
     if (j != 0) {
       ftot[j - 1]->SetLineColor(kAquamarine);
       ftot[j - 1]->Draw("same");
+      HDraw[j]->GetXaxis()->SetLabelSize(0.05);
     }
   }
   c2->cd();
-  gStyle->SetStatW(0.15);
-  gStyle->SetStatH(0.12);
-  gStyle->SetStatX(0.9);
-  gStyle->SetStatY(0.9);
   htot[10]->GetXaxis()->SetRangeUser(0.6, 1.2);
   for (int i = 4; i < 7; ++i) {
     c2->cd(i - 3);
@@ -189,9 +189,10 @@ void Data() {
     HDraw[i]->GetYaxis()->SetTitle("Entries");
     HDraw[i]->GetXaxis()->SetTitleSize(0.05);
     HDraw[i]->GetYaxis()->SetTitleSize(0.05);
+    HDraw[i]->GetYaxis()->SetTitleOffset(1.);
     HDraw[i]->GetYaxis()->SetTitleOffset(0.85);
     HDraw[i]->GetXaxis()->SetLabelSize(0.045);
-    HDraw[i]->GetXaxis()->SetLabelOffset(0.02);
+    HDraw[i]->GetXaxis()->SetLabelOffset(0.015);
     HDraw[i]->GetYaxis()->SetLabelSize(0.045);
     HDraw[i]->SetLineColor(kBlack);
     HDraw[i]->SetFillColor(40);
