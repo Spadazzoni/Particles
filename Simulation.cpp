@@ -44,17 +44,14 @@ void Main() {
   TH1F* invmass2 =
       new TH1F("inv mass2", "Invariant Mass Distribution (same charges)", 100,
                0.75, 1.05);
-  TH1F* invmass3 =
-      new TH1F("inv mass3", "Invariant Mass Distribution (p+/k- or p-/k+)",
-               1000, 0.7, 1.1);
-  TH1F* invmass4 =
-      new TH1F("inv mass4", "Invariant Mass Distribution (p+/k+ or p-/k-)",
-               1000, 0.7, 1.1);
-  TH1F* invmass5 =
-      new TH1F("inv mass5", "Invariant Mass Distribution (decay)", 1000, 0, 2); //togli
-  TH1* htot[11] = {types,    angles,        pav,          impulse,  energy,
-                   invmass0, invmass1,      invmass2,     invmass3, invmass4,
-                   invmass5};
+  TH1F* invmass3 = new TH1F(
+      "inv mass3", "Invariant Mass Distribution (p+/k- or p-/k+)", 1000, 0, 7.);
+  TH1F* invmass4 = new TH1F(
+      "inv mass4", "Invariant Mass Distribution (p+/k+ or p-/k-)", 1000, 0, 7.);
+  TH1F* invmass5 = new TH1F("inv mass5", "Invariant Mass Distribution (decay)",
+                            1000, 0, 2);  // togli
+  TH1* htot[11] = {types,    angles,   pav,      impulse,  energy,  invmass0,
+                   invmass1, invmass2, invmass3, invmass4, invmass5};
   for (int i = 5; i < 11; ++i) {
     htot[i]->Sumw2();
   }

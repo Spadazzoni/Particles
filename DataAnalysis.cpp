@@ -14,6 +14,8 @@
 void Data() {
   gStyle->SetOptStat(2210);
   gStyle->SetOptFit(1111);
+  gStyle->SetStatX(0.9);
+  gStyle->SetStatY(0.9);
   TFile *file = new TFile("Particles.root");
   TH1 *htot[11];
   TString s[11] = {"types",     "angles",    "pav",       "impulse",
@@ -41,10 +43,11 @@ void Data() {
   SumCharges->SetTitle("Opposite charges minus Same charges");
   SumParticles->Add(htot[8], htot[9], 1, -1);
   SumParticles->SetTitle("p+/k- and p-/k+ minus p+/k+ and p-/k-");
-  TF1 *f4 = new TF1("f4", "gaus", 0, 10);
-  TF1 *f5 = new TF1("f5", "gaus", 0, 10);
+  TF1 *f4 = new TF1("f4", "gaus", 0, 7);
+  TF1 *f5 = new TF1("f5", "gaus", 0, 7);
   SumCharges->Fit("f4", "Q0");
   SumParticles->Fit("f5", "Q0");
+  SumParticles->GetXaxis()->SetRangeUser(0.4, 1.4);
   TF1 *f6 = new TF1("f6", "gaus", 0.6, 1.2);
   TF1 *ftot[6] = {f2, f1, f3, f6, f4, f5};
   TH1 *HDraw[7] = {htot[0],  AngleX,     AngleY,      htot[2],
@@ -152,12 +155,12 @@ void Data() {
   c2->Divide(2, 2);
   c1->Divide(2, 2);
   c1->cd();
-  gStyle->SetStatW(0.3);
-  gStyle->SetStatH(0.15);
-  gStyle->SetStatX(0.9);
-  gStyle->SetStatY(0.9);
+  double PaveH[4] = {2.5, 0.15, 0.15, 0.45};
+  double PaveW[4] = {0.6, 0.3, 0.3, 0.7};
   for (int j = 0; j < 4; ++j) {
     c1->cd(j + 1);
+    gStyle->SetStatW(PaveW[j]);
+    gStyle->SetStatH(PaveH[j]);
     HDraw[j]->GetXaxis()->SetTitle(Xtitles[j]);
     HDraw[j]->GetYaxis()->SetTitle("Entries");
     HDraw[j]->GetXaxis()->SetTitleSize(0.05);

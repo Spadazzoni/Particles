@@ -9,78 +9,78 @@ Distribution of azimutal and polar angles has 1e+07 entries.
 Average Impulse Distribution has 1e+07 entries.
 Distribution of trasverse impulse has 1e+07 entries.
 Distribution of energy has 1e+07 entries.
-Invariant Mass Distribution has 5.04936e+08 entries.
-Invariant Mass Distribution (opposite charges) has 2.52513e+08 entries.
-Invariant Mass Distribution (same charges) has 2.52423e+08 entries.
-Invariant Mass Distribution (p+/k- or p-/k+) has 2.38788e+07 entries.
-Invariant Mass Distribution (p+/k+ or p-/k-) has 2.37857e+07 entries.
-Invariant Mass Distribution (decay) has 98873 entries.
+Invariant Mass Distribution has 5.05051e+08 entries.
+Invariant Mass Distribution (opposite charges) has 2.52586e+08 entries.
+Invariant Mass Distribution (same charges) has 2.52465e+08 entries.
+Invariant Mass Distribution (p+/k- or p-/k+) has 2.38906e+07 entries.
+Invariant Mass Distribution (p+/k+ or p-/k-) has 2.37867e+07 entries.
+Invariant Mass Distribution (decay) has 100011 entries.
 
 
 ->NUMBER OF OCCURRENCIES FOR EACH PARTICLE: 
-#pi+ was generated 3.99933e+06 +/- 1999.83 times.
-#pi- was generated 4.00096e+06 +/- 2000.24 times.
-k+ was generated 500412 +/- 707.398 times.
-k- was generated 500758 +/- 707.643 times.
-p+ was generated 450105 +/- 670.899 times.
-p- was generated 449556 +/- 670.489 times.
-k* was generated 98873 +/- 314.441 times.
+#pi+ was generated 4.0006e+06 +/- 2000.15 times.
+#pi- was generated 3.99987e+06 +/- 1999.97 times.
+k+ was generated 499934 +/- 707.06 times.
+k- was generated 500288 +/- 707.31 times.
+p+ was generated 449592 +/- 670.516 times.
+p- was generated 449707 +/- 670.602 times.
+k* was generated 100011 +/- 316.245 times.
 
 
 ->ABUNDANCIES (%): 
-#pi+ 39.9933 %
-#pi- 40.0097 %
-k+ 5.00412 %
-k- 5.00758 %
-p+ 4.50105 %
-p- 4.49556 %
-k* 0.98873 %
+#pi+ 40.006 %
+#pi- 39.9987 %
+k+ 4.99934 %
+k- 5.00288 %
+p+ 4.49592 %
+p- 4.49707 %
+k* 1.00011 %
 
 
 ->POLAR ANGLES DISTRIBUTIONS: 
 -->PHI:
-Mean Entries per Bin: 99998.9 +/- 31.6226
-Mean: 3.14153 +/- 0.000573606  rad
-Chi square: 113.442
-Degrees of Freedom: 99
- Reduced Chi square: 1.14587
--->THETA:
 Mean Entries per Bin: 99998.8 +/- 31.6226
-Mean: 1.57072 +/- 0.000286752  rad
-Chi square: 121.644
+Mean: 3.1426 +/- 0.000573665  rad
+Chi square: 115.653
 Degrees of Freedom: 99
-Reduced Chi square: 1.22872
+ Reduced Chi square: 1.16821
+-->THETA:
+Mean Entries per Bin: 99999.1 +/- 31.6226
+Mean: 1.57088 +/- 0.000286725  rad
+Chi square: 94.0838
+Degrees of Freedom: 99
+Reduced Chi square: 0.950341
 
 
 ->AVERAGE IMPULSE DISTRIBUTION: 
-Multiplicative coefficient of exponential fit: 70029.5 +/- 31.6022  GeV
-Mean: 1.00053 +/- 0.000324015
-Chi square: 1016.73
+Multiplicative coefficient of exponential fit: 70025.1 +/- 31.5984  GeV
+Mean: 1.00046 +/- 0.000323956
+Chi square: 977.268
 Degrees of Freedom: 998
-Reduced Chi square: 1.01876
-Fit probability: 0.333078
+Reduced Chi square: 0.979226
+Fit probability: 0.674493
 
 
 INVARIANT MASS BETWEEN DECAY PRODUCTS OF SAME K*: 
-Mean: 0.891773 +/- 0.000158536  GeV/c^2
-RMS: 0.0497599 +/- 0.000111605  GeV/c^2
-Width: 1582.34 +/- 6.15893  GeV/c^2
-Reduced Chi square: 1.01889
+Mean: 0.891679 +/- 0.000157679  GeV/c^2
+RMS: 0.0497726 +/- 0.000112254  GeV/c^2
+Width: 1600.95 +/- 6.21703  GeV/c^2
+Reduced Chi square: 0.792387
 
 
 ->INVARIANT MASS DISTRIBUTIONS: 
 -->SAME CHARGES AND OPPOSITE CHARGES:
-Mean: 0.88931 +/- 0.00560859  GeV/c^2
-RMS: 0.0540778 +/- 0.00535386  GeV/c^2
-Width: 2279.24 +/- 195.437  GeV/c^2
-Reduced Chi Square: 0.933129
-Fit probability: 0.665801
+Mean: 0.888387 +/- 0.00449584  GeV/c^2
+RMS: 0.0414092 +/- 0.00503062  GeV/c^2
+Width: 2402.82 +/- 235.587  GeV/c^2
+Reduced Chi Square: 1.02649
+Fit probability: 0.408781
 -->PARTICLES AND ANTIPARTICLES:
-Mean: 0.890648 +/- 0.00217669  GeV/c^2
-RMS: 0.0505988 +/- 0.00208534  GeV/c^2
-Width: 293.801 +/- 10.8307  GeV/c^2
-Reduced Chi Square: 0.920924
-Fit probability: 0.665801
+Mean: 0.890706 +/- 0.00196976  GeV/c^2
+RMS: 0.0498286 +/- 0.00194927  GeV/c^2
+Width: 5663.51 +/- 193.069  GeV/c^2
+Reduced Chi Square: 1.01795
+Fit probability: 0.408781
 
 
 //FILE END//
