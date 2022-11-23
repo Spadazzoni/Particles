@@ -38,9 +38,9 @@ void Data() {
   TF1 *f1 = new TF1("f1", "[0]", 0, M_PI);      // theta
   TF1 *f2 = new TF1("f2", "[0]", 0, 2 * M_PI);  // phi
   TH1D *AngleX = ((TH2F *)file->Get(s[1]))->ProjectionX("AngleX", 0, 100);
-  AngleX->SetTitle("Polar Angle Distribution");
+  AngleX->SetTitle("Azimuthal Angle Distribution");
   TH1D *AngleY = ((TH2F *)file->Get(s[1]))->ProjectionY("AngleY", 0, 100);
-  AngleY->SetTitle("Azimuthal Angle Distribution");
+  AngleY->SetTitle("Polar Angle Distribution");
   AngleX->Fit("f2", "Q0");
   AngleY->Fit("f1", "Q0");
   TF1 *f3 = new TF1("f3", "[0]*e^(-[1]*x)", 0, 7);
@@ -85,7 +85,8 @@ void Data() {
     txt << "->ABUNDANCIES (%): " << '\n';
     for (int i = 0; i < 7; ++i) {
       txt << names[i] << " " << ((htot[0]->GetBinContent(i + 1)) / 1E7) * 100
-          << " %" << '\n';
+          << " +/- " << ((htot[0]->GetBinError(i + 1)) / 1E7) * 100 << " %"
+          << '\n';
     }
     txt << '\n';
     txt << '\n';
