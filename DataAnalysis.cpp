@@ -55,7 +55,7 @@ void Data() {
   TF1 *f5 = new TF1("f5", "gaus", 0, 7);
   SumCharges->Fit("f4", "Q0");
   SumParticles->Fit("f5", "Q0");
-  SumParticles->GetXaxis()->SetRangeUser(0.4, 1.4);
+  SumParticles->GetXaxis()->SetRangeUser(0.6, 1.2);
   TF1 *f6 = new TF1("f6", "gaus", 0.6, 1.2);
   TF1 *ftot[6] = {f2, f1, f3, f6, f4, f5};
   TH1 *HDraw[7] = {htot[0],  AngleX,     AngleY,      htot[2],
@@ -156,21 +156,21 @@ void Data() {
   } else {
     std::cout << "Cannot find or open file." << '\n';
   }
-  TCanvas *c1 = new TCanvas("c1", "MyCanvas1", 200, 10, 800, 400);
-  TCanvas *c2 = new TCanvas("c2", "MyCanvas2", 200, 10, 800, 400);
+  TCanvas *c1 = new TCanvas("c1", "MyCanvas1", 200, 10, 500, 800);
+  TCanvas *c2 = new TCanvas("c2", "MyCanvas2", 200, 10, 650, 800);
   c1->Print("ParticlesHistos.pdf[");
   c2->Print("InvMass.pdf[");
-  c2->Divide(2, 2);
-  c1->Divide(2, 2);
+  c2->Divide(1, 3);
+  c1->Divide(1, 4);
   c1->cd();
   for (int j = 0; j < 4; ++j) {
     c1->cd(j + 1);
     HDraw[j]->GetXaxis()->SetTitle(Xtitles[j]);
     HDraw[j]->GetYaxis()->SetTitle("Entries");
     HDraw[j]->GetXaxis()->SetTitleSize(0.05);
-    HDraw[j]->GetYaxis()->SetTitleSize(0.05);
-    HDraw[j]->GetYaxis()->SetTitleOffset(0.95);
-    HDraw[j]->GetYaxis()->SetLabelSize(0.045);
+    HDraw[j]->GetYaxis()->SetTitleSize(0.06);
+    HDraw[j]->GetYaxis()->SetTitleOffset(0.72);
+    HDraw[j]->GetYaxis()->SetLabelSize(0.055);
     HDraw[j]->GetXaxis()->SetLabelOffset(0.01);
     HDraw[j]->SetLineColor(kBlack);
     HDraw[j]->SetFillColor(40);
@@ -188,12 +188,11 @@ void Data() {
     HDraw[i]->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
     HDraw[i]->GetYaxis()->SetTitle("Entries");
     HDraw[i]->GetXaxis()->SetTitleSize(0.05);
-    HDraw[i]->GetYaxis()->SetTitleSize(0.05);
-    HDraw[i]->GetYaxis()->SetTitleOffset(1.);
-    HDraw[i]->GetYaxis()->SetTitleOffset(0.85);
-    HDraw[i]->GetXaxis()->SetLabelSize(0.045);
+    HDraw[i]->GetYaxis()->SetTitleSize(0.06);
+    HDraw[i]->GetYaxis()->SetTitleOffset(0.7);
+    HDraw[i]->GetXaxis()->SetLabelSize(0.05);
     HDraw[i]->GetXaxis()->SetLabelOffset(0.015);
-    HDraw[i]->GetYaxis()->SetLabelSize(0.045);
+    HDraw[i]->GetYaxis()->SetLabelSize(0.055);
     HDraw[i]->SetLineColor(kBlack);
     HDraw[i]->SetFillColor(40);
     HDraw[i]->DrawCopy("hist");
