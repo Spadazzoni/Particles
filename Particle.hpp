@@ -29,7 +29,7 @@ class Particle {
   void SetP(double, double, double);
   int static GetSize();
   void static PrintSize();
-  int Decay2body(Particle &dau1, Particle &dau2) const;
+  int Decay2body(Particle &, Particle &) const;
 
  private:
   void Boost(double, double, double);
