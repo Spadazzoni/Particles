@@ -32,7 +32,7 @@ class Particle {
   int Decay2body(Particle &dau1, Particle &dau2) const;
 
  private:
-  void Boost(double bx, double by, double bz);
+  void Boost(double, double, double);
   std::vector<ParticleType *> static fParticleType;
   int static const fMaxNumParticleType = 10;
   int static fNParticleType;
