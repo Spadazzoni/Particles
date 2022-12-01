@@ -10,9 +10,11 @@ void Main() {
   R__LOAD_LIBRARY(ParticleType_cpp.so);
   R__LOAD_LIBRARY(ResonanceType_cpp.so);
   R__LOAD_LIBRARY(Particle_cpp.so);
+  // Setting the seed for PRNG
   gRandom->SetSeed();
   std::vector<Particle> EventParticles;
   std::vector<Particle> ResonanceEvents;
+  // Preparing and Filling fParticleType
   char* ppion = new char('p');   // positive pion
   char* npion = new char('n');   // negative pion
   char* pkaon = new char('k');   // positive kaon
@@ -28,6 +30,7 @@ void Main() {
   for (int i = 0; i < 7; ++i) {
     Particle::AddParticleType(ntot[i], mass[i], charge[i], res[i]);
   }
+  // Creating Histograms for further use
   TH1F* types =
       new TH1F("types", "Abundancies of generated Particles", 7, 0, 7);
   TH2F* angles = new TH2F("angles", "Distribution of azimutal and polar angles",
@@ -55,6 +58,7 @@ void Main() {
   for (int i = 5; i < 11; ++i) {
     htot[i]->Sumw2();
   }
+  // Generation cycle
   for (int i = 0; i < 1E5; ++i) {
     for (int j = 0; j < 1E2; ++j) {
       Particle p{*ppion};
@@ -154,11 +158,13 @@ void Main() {
     EventParticles.clear();
     ResonanceEvents.clear();
   }
+  // Saving the Histograms
   TFile* f = new TFile("Particles.root", "RECREATE");
   for (int i = 0; i < 11; ++i) {
     htot[i]->Write();
   }
   f->Close();
+  // Cleaning up
   delete ppion;
   delete npion;
   delete pkaon;

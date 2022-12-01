@@ -12,12 +12,14 @@
 #include "TStyle.h"
 
 void Data() {
+  // Handling cosmetics for the Stats box
   gStyle->SetOptStat(2210);
   gStyle->SetOptFit(1111);
   gStyle->SetStatW(0.15);
   gStyle->SetStatH(0.15);
   gStyle->SetStatX(0.9);
   gStyle->SetStatY(0.9);
+  // Extracting Histos from the file
   TFile *file = new TFile("Particles.root");
   TH1 *htot[11];
   TString s[11] = {"types",     "angles",    "pav",       "impulse",
@@ -35,6 +37,7 @@ void Data() {
   }
   htot[0]->SetStats(kFALSE);
   htot[0]->SetLabelSize(0.07);
+  // Fitting and Histos operations
   TF1 *f1 = new TF1("f1", "[0]", 0, M_PI);      // theta
   TF1 *f2 = new TF1("f2", "[0]", 0, 2 * M_PI);  // phi
   TH1D *AngleX = ((TH2F *)file->Get(s[1]))->ProjectionX("AngleX", 0, 100);
@@ -61,6 +64,7 @@ void Data() {
   TH1 *HDraw[7] = {htot[0],  AngleX,     AngleY,      htot[2],
                    htot[10], SumCharges, SumParticles};
   htot[10]->Fit("f6", "Q0");
+  // Creating an output file
   std::ofstream txt("./HistoData.txt", std::ofstream::out);
   if (txt.is_open()) {
     txt << "=============================================" << '\n';
@@ -157,6 +161,7 @@ void Data() {
   } else {
     std::cout << "Cannot find or open file." << '\n';
   }
+  // Creating the Canvases
   TCanvas *c1 = new TCanvas("c1", "MyCanvas1", 200, 10, 500, 800);
   TCanvas *c2 = new TCanvas("c2", "MyCanvas2", 200, 10, 650, 800);
   c1->Print("ParticlesHistos.pdf[");
@@ -164,6 +169,7 @@ void Data() {
   c2->Divide(1, 3);
   c1->Divide(1, 4);
   c1->cd();
+  // Drawing
   for (int j = 0; j < 4; ++j) {
     c1->cd(j + 1);
     HDraw[j]->GetXaxis()->SetTitle(Xtitles[j]);
@@ -200,6 +206,7 @@ void Data() {
     ftot[i - 1]->SetLineColor(kAquamarine);
     ftot[i - 1]->Draw("same");
   }
+  // Saving the Canvases on pdf files
   c1->Print("ParticlesHistos.pdf");
   c1->Print("ParticlesHistos.pdf]");
   c2->Print("InvMass.pdf");
